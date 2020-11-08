@@ -8,8 +8,15 @@ public class Main {
         System.out.println("Nazwa grupy: " + nazwaGrupy + "\nGithub ID Team Leadera: " + githubID);
     }
 
+
     public void newFun(){
         String MyGithubID="s218156";
         System.out.println("My Github ID: "+MyGithubID);
+    }
+
+    public void displayPatryk() {
+        String githubID = "Patryk-Korczak";
+        System.out.println("GitHub ID: " + githubID);
+
     }
 }
