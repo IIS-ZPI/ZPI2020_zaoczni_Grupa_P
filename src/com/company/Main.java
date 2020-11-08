@@ -11,4 +11,16 @@ public class Main {
     public void displayMarcin(){
         System.out.println("Marcin-Stan");
     }
+
+    public void newFun(){
+        String MyGithubID="s218156";
+        System.out.println("My Github ID: "+MyGithubID);
+    }
+
+    public void displayPatryk() {
+        String githubID = "Patryk-Korczak";
+        System.out.println("GitHub ID: " + githubID);
+
+    }
 }
+
