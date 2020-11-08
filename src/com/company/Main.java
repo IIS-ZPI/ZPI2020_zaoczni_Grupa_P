@@ -14,7 +14,7 @@ public class Main {
         System.out.println("Marcin-Stan");
     }
 
-    public void newFun(){
+    public void displayMichal(){
         String MyGithubID="s218156";
         System.out.println("My Github ID: "+MyGithubID);
     }
