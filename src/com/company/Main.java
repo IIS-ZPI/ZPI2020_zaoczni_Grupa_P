@@ -1,3 +1,5 @@
+
+
 package com.company;
 
 public class Main {
@@ -22,5 +24,10 @@ public class Main {
         System.out.println("GitHub ID: " + githubID);
 
     }
+  
+  public void displayLukasz(){
+        System.out.println("lukasz12121");
+    }
 }
+
 
