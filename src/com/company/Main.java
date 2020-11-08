@@ -7,4 +7,8 @@ public class Main {
         String githubID = "Patryk-Korczak";
         System.out.println("Nazwa grupy: " + nazwaGrupy + "\nGithub ID Team Leadera: " + githubID);
     }
+
+    public void displayMarcin(){
+        System.out.println("Marcin-Stan");
+    }
 }
