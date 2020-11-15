@@ -7,7 +7,7 @@ public class Main {                                 //com 2
         System.out.println("Nazwa grupy: " + nazwaGrupy + "\nGithub ID Team Leadera: " + githubID);
     }
 
-    public void displayMarcin() {
+    public void displayMarcin() {               //com 1
         String githubID = "Marcin-Stan";
         System.out.println("Github ID: " + githubID);
     }
