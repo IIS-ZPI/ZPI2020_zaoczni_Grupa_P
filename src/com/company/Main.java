@@ -1,18 +1,18 @@
 package com.company;
 
-public class Main {                                 //com 2
+public class Main {
     public static void main(String[] args) {
         String nazwaGrupy = "Grupa P";
         String githubID = "Patryk-Korczak";
         System.out.println("Nazwa grupy: " + nazwaGrupy + "\nGithub ID Team Leadera: " + githubID);
     }
 
-    public void displayMarcin() {               //com 1
+    public void displayMarcin() {
         String githubID = "Marcin-Stan";
         System.out.println("Github ID: " + githubID);
     }
 
-    public void displayMichal() {               //com 3
+    public void displayMichal() {
         String githubID="s218156";
         System.out.println("Github ID: " + githubID);
     }
