@@ -12,7 +12,7 @@ public class Main {
         System.out.println("Github ID: " + githubID);
     }
 
-    public void displayMichal() {
+    public void displayMichal() {               //com 3
         String githubID="s218156";
         System.out.println("Github ID: " + githubID);
     }
