@@ -1,4 +1,6 @@
+package com.company;
+
 interface IArithmeticDiv{
-    doule Division(double A, doduble B);
+    double Division(double A, double B);
 
 }
