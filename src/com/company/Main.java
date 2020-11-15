@@ -1,9 +1,6 @@
-
-
 package com.company;
 
 public class Main {
-
     public static void main(String[] args) {
         String nazwaGrupy = "Grupa P";
         String githubID = "Patryk-Korczak";
@@ -11,22 +8,24 @@ public class Main {
     }
 
     public void displayMarcin() {
-        System.out.println("Marcin-Stan");
+        String githubID = "Marcin-Stan";
+        System.out.println("Github ID: " + githubID);
     }
 
     public void displayMichal() {
-        String MyGithubID = "s218156";
-        System.out.println("My Github ID: " + MyGithubID);
+        String githubID="s218156";
+        System.out.println("Github ID: " + githubID);
     }
 
     public void displayPatryk() {
         String githubID = "Patryk-Korczak";
         System.out.println("GitHub ID: " + githubID);
-
     }
 
+  
     public void displayLukasz() {
-        System.out.println("lukasz12121");
+        String githubID = "lukasz12121";
+        System.out.println("GitHub ID: " + githubID);
     }
 
 }
