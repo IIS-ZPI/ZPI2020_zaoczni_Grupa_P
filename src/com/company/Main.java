@@ -10,13 +10,13 @@ public class Main {
         System.out.println("Nazwa grupy: " + nazwaGrupy + "\nGithub ID Team Leadera: " + githubID);
     }
 
-    public void displayMarcin(){
+    public void displayMarcin() {
         System.out.println("Marcin-Stan");
     }
 
-    public void displayMichal(){
-        String MyGithubID="s218156";
-        System.out.println("My Github ID: "+MyGithubID);
+    public void displayMichal() {
+        String MyGithubID = "s218156";
+        System.out.println("My Github ID: " + MyGithubID);
     }
 
     public void displayPatryk() {
@@ -24,10 +24,11 @@ public class Main {
         System.out.println("GitHub ID: " + githubID);
 
     }
-  
-  public void displayLukasz(){
+
+    public void displayLukasz() {
         System.out.println("lukasz12121");
     }
+
 }
 
 
