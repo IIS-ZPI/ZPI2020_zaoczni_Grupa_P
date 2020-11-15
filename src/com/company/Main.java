@@ -27,7 +27,7 @@ public class Main {
         String githubID = "lukasz12121";
         System.out.println("GitHub ID: " + githubID);
     }
-    //my comment
+
 }
 
 
