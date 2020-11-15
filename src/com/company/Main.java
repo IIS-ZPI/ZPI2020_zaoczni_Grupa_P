@@ -21,11 +21,13 @@ public class Main {
         String githubID = "Patryk-Korczak";
         System.out.println("GitHub ID: " + githubID);
     }
+
   
     public void displayLukasz() {
         String githubID = "lukasz12121";
         System.out.println("GitHub ID: " + githubID);
     }
+
 }
 
 
