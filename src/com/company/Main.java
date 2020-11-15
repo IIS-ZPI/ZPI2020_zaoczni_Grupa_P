@@ -1,6 +1,6 @@
 package com.company;
 
-public class Main {
+public class Main {                                 //com 1
     public static void main(String[] args) {
         String nazwaGrupy = "Grupa P";
         String githubID = "Patryk-Korczak";
