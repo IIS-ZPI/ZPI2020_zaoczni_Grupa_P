@@ -1,6 +1,10 @@
+import org.json.simple.parser.ParseException;
+
+import java.io.IOException;
+
 public class Main {
-    public static void main(String[] args) {
-        System.out.println("First commit");
-        System.out.println("test");
+    public static void main(String[] args) throws IOException, ParseException {
+        RestClient restClient = new RestClient();
+        restClient.connection();
     }
 }
