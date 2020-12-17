@@ -3,14 +3,11 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Scanner;
 
-import org.json.JSONWriter;
 import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-public class RestClient {
-
+public class ApiConnect {
 
     public void connection() throws IOException, ParseException {
         URL url = new URL("http://api.nbp.pl/api/cenyzlota/2013-01-01/2013-01-31/?format=json");
