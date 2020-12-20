@@ -7,5 +7,6 @@ class MainTest {
     @Test
     void exampleTest() {
         assertEquals(1,1);
+        System.out.println("ok");
     }
 }
