@@ -10,10 +10,10 @@ import org.json.simple.parser.ParseException;
 
 public class ApiConnect {
 
-    public void connection()  {
+    public String connection()  {
         URL url=null;
         try{
-            url = new URL("http://api.nbp.pl/api/cenyzlota/2013-01-01/2013-01-31/?format=json");
+            url = new URL("http://api.nbp.pl/api/exchangerates/tables/A/?format=json");
         }catch (MalformedURLException e){
             e.printStackTrace();
         }
@@ -47,6 +47,7 @@ public class ApiConnect {
 
             scanner.close();
 
+            /*
             JSONParser parse = new JSONParser();
             try{
                 JSONArray array = (JSONArray) parse.parse(inline);
@@ -55,6 +56,8 @@ public class ApiConnect {
                 e.printStackTrace();
             }
 
+             */
+            return inline;
         }
 
     }
