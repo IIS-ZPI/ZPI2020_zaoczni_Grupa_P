@@ -1,6 +1,7 @@
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import functions.Session;
+import functions.Statistics;
 import json.ApiConnect;
 import json.table.CurrencyInfo;
 import org.jfree.ui.RefineryUtilities;
@@ -47,10 +48,12 @@ public class Main {
                 session.setVisible( true );
                 session.printSession();
                 break;
+
+            case 2:
+                Statistics statistics = new Statistics(periodTime, myFinalInfo.getRates().get(number-1).getCode(), periodTimeNumber);
+                statistics.calculate();
+                break;
         }
-
-
-
 
     }
 }
