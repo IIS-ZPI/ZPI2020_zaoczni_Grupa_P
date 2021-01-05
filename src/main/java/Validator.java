@@ -29,36 +29,7 @@ public class Validator {
         }
         return number;
     }
-/*
-    public static String getDate() {
 
-        boolean valid = false;
-        String date = null;
-
-        while(!valid){
-            System.out.println("Podaj date :rrrr-mm-dd");
-            Scanner sc = new Scanner(System.in);
-            date = sc.nextLine();
-            try {
-                // ResolverStyle.STRICT for 30, 31 days checking, and also leap year.
-                LocalDate.parse(date,
-                        DateTimeFormatter.ofPattern("uuuu-M-d")
-                                .withResolverStyle(ResolverStyle.STRICT)
-                );
-
-                valid = true;
-
-            } catch (DateTimeParseException e) {
-                System.out.println("Niepoprawna data!");
-                valid = false;
-            }
-        }
-
-
-        return date;
-    }
-
- */
 
     public static int getFunction() {
         int number = 0;
@@ -66,16 +37,16 @@ public class Validator {
 
         System.out.println("Jaka chcesz wybrac funkcje ?");
         System.out.println("1.Sesja wzrostowa, spadkowa, bez zmian");
+        System.out.println("2. mediana, dominanta, odchylenie standardowe, współczynnik zmienności");
         while (!isCorrect) {
 
             try {
                 System.out.println("Podaj numer funkcji(1-3):");
                 Scanner sc = new Scanner(System.in);
                 number = sc.nextInt();
-                if(number!=1)
-                    isCorrect=false;
-                else
-                    isCorrect = true;
+                //uproszczone sprawdzanie poprawności numeru (P.K)
+                isCorrect= number == 1 || number == 2;
+
             } catch (InputMismatchException e) {
                 System.out.println("Mozesz podac tylko liczbe");
             }
