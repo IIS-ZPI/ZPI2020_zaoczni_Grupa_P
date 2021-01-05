@@ -1,19 +1,17 @@
+package json;
+
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Scanner;
 
-import org.json.simple.JSONArray;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
-
 public class ApiConnect {
 
-    public String connection()  {
+    public String connection(String address)  {
         URL url=null;
         try{
-            url = new URL("http://api.nbp.pl/api/exchangerates/tables/A/?format=json");
+            url = new URL(address);
         }catch (MalformedURLException e){
             e.printStackTrace();
         }
@@ -27,8 +25,6 @@ public class ApiConnect {
         }catch (IOException e){
             e.printStackTrace();
         }
-
-        System.out.println(responseCode);
 
         if (responseCode != 200)
             throw new RuntimeException("HttpResponseCode: " + responseCode);
@@ -46,17 +42,6 @@ public class ApiConnect {
             }
 
             scanner.close();
-
-            /*
-            JSONParser parse = new JSONParser();
-            try{
-                JSONArray array = (JSONArray) parse.parse(inline);
-                System.out.println(array);
-            }catch (ParseException e ){
-                e.printStackTrace();
-            }
-
-             */
             return inline;
         }
 
@@ -64,5 +49,3 @@ public class ApiConnect {
 
 
 }
-
-
