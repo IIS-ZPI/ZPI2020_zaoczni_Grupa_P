@@ -76,7 +76,7 @@ public class Session extends ApplicationFrame{
         return dataset;
     }
 
-    public void printSession(){
+    public int[] printSession(){
         int growthSession=0;
         int relegationSession=0;
         int noChangeSession=0;
@@ -115,6 +115,10 @@ public class Session extends ApplicationFrame{
         System.out.println("Ilosc sesji wzrostowych:"+growthSession);
         System.out.println("Ilosc sesji spadkowych:"+relegationSession);
         System.out.println("Ilosc sesji bez zmian:"+noChangeSession);
+
+        int [] results = {growthSession,relegationSession,noChangeSession};
+
+        return results;
 
 
 
