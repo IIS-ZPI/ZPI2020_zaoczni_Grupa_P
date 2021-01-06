@@ -34,7 +34,7 @@ public class Statistics {
 
     }
 
-    public void calculate() {
+    public float[] calculate() {
         // mediana
         Float mediana;
         ArrayList<Float> sortedList = new ArrayList<>();
@@ -94,5 +94,8 @@ public class Statistics {
         System.out.println("Odchylenie standardowe wynosi " + odchylenie);
         System.out.println("Wspolczynnik zmiennosci wynosi " + zmiennosc + "%");
         System.out.println("Dominanta wynosi " + dominanta.getKey() + " wartosc ta wystapila " + dominanta.getValue() + " krotnie");
+
+        float [] results = {mediana,odchylenie,zmiennosc,(Float)dominanta.getKey()};
+        return results;
     }
 }
