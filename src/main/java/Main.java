@@ -30,11 +30,13 @@ public class Main {
         System.out.println("Wybrano walute: "+ myFinalInfo.getRates().get(number-1).getCurrency());
 
         int functionNumber = Validator.getFunction();
+        String periodTime="";
+        if(functionNumber!=3)
+             periodTime = Validator.getPeriodTime();
 
-        String periodTime = Validator.getPeriodTime();
 
         int periodTimeNumber = Validator.periodTimeNumber;
-        System.out.println(periodTimeNumber);
+        //System.out.println(periodTimeNumber);
 
         switch (functionNumber){
             case 1:
@@ -53,6 +55,11 @@ public class Main {
                 Statistics statistics = new Statistics(periodTime, myFinalInfo.getRates().get(number-1).getCode(), periodTimeNumber);
                 statistics.calculate();
                 break;
+
+            case 3:
+               int secondNumber = Validator.getNumber();
+
+
         }
 
     }
