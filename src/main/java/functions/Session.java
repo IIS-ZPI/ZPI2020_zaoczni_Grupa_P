@@ -23,11 +23,12 @@ public class Session extends ApplicationFrame{
     int periodTimeNumber;
 
 
-    public Session(String applicationTitle , String chartTitle, String data, String currency, int periodTimeNumber) {
+    public Session(String applicationTitle , String chartTitle, String data, String currency, int periodTimeNumber ) {
         super(applicationTitle);
         this.periodTimeNumber=periodTimeNumber;
         Gson gson = new Gson();
         Calendar calendar = Calendar.getInstance();
+
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         String currentDate = formatter.format(calendar.getTime());
 
@@ -123,6 +124,10 @@ public class Session extends ApplicationFrame{
 
 
     }
+
+
+
+
 
 
 

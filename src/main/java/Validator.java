@@ -38,6 +38,7 @@ public class Validator {
         System.out.println("Jaka chcesz wybrac funkcje ?");
         System.out.println("1.Sesja wzrostowa, spadkowa, bez zmian");
         System.out.println("2. mediana, dominanta, odchylenie standardowe, współczynnik zmienności");
+        System.out.println("3. Rozkład zmian miesięcznych i kwartalnych");
         while (!isCorrect) {
 
             try {
@@ -45,7 +46,7 @@ public class Validator {
                 Scanner sc = new Scanner(System.in);
                 number = sc.nextInt();
                 //uproszczone sprawdzanie poprawności numeru (P.K)
-                isCorrect= number == 1 || number == 2;
+                isCorrect= number == 1 || number == 2 || number ==3;
 
             } catch (InputMismatchException e) {
                 System.out.println("Mozesz podac tylko liczbe");
