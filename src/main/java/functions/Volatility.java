@@ -157,7 +157,7 @@ public class Volatility {
         return String.format("%."+digits+"f",n*100)+"%";
     }
 
-    private float deviation(ArrayList<Float> odchylenieList){
+    public float deviation(ArrayList<Float> odchylenieList){
         float odchylenie;
         float sum = 0;
 
@@ -178,21 +178,21 @@ public class Volatility {
     }
 
 
-    private String getQuarter(){
+    public String getQuarter(){
         Calendar calendar = Calendar.getInstance();
         calendar.add(Calendar.MONTH,-3);
         String quarterDate = formatter.format(calendar.getTime());
         return  quarterDate;
     }
 
-    private String getMonth(){
+    public String getMonth(){
         Calendar calendar = Calendar.getInstance();
         calendar.add(Calendar.MONTH,-1);
         String quarterDate = formatter.format(calendar.getTime());
         return  quarterDate;
     }
 
-    private String getCurrentDate(){
+    public String getCurrentDate(){
         Calendar calendar = Calendar.getInstance();
         String currentDate = formatter.format(calendar.getTime());
         return currentDate;
