@@ -2,6 +2,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import functions.Session;
 import functions.Statistics;
+import functions.Volatility;
 import json.ApiConnect;
 import json.table.CurrencyInfo;
 import org.jfree.ui.RefineryUtilities;
@@ -30,11 +31,13 @@ public class Main {
         System.out.println("Wybrano walute: "+ myFinalInfo.getRates().get(number-1).getCurrency());
 
         int functionNumber = Validator.getFunction();
+        String periodTime="";
+        if(functionNumber!=3)
+             periodTime = Validator.getPeriodTime();
 
-        String periodTime = Validator.getPeriodTime();
 
         int periodTimeNumber = Validator.periodTimeNumber;
-        System.out.println(periodTimeNumber);
+        //System.out.println(periodTimeNumber);
 
         switch (functionNumber){
             case 1:
@@ -53,6 +56,15 @@ public class Main {
                 Statistics statistics = new Statistics(periodTime, myFinalInfo.getRates().get(number-1).getCode(), periodTimeNumber);
                 statistics.calculate();
                 break;
+
+            case 3:
+               int secondNumber = Validator.getNumber();
+                Volatility volatility = new Volatility(myFinalInfo.getRates().get(number-1).getCode(),
+                        myFinalInfo.getRates().get(secondNumber-1).getCode());
+                volatility.printMonthResults();
+
+
+
         }
 
     }
