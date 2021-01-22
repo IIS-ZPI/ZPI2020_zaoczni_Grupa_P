@@ -5,14 +5,21 @@ import json.ApiConnect;
 import json.currency.CurrencyInfo;
 import org.junit.jupiter.api.Test;
 
-import java.text.SimpleDateFormat;
+
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedHashMap;
+
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+
 
 public class VolatilityTest {
 
@@ -126,4 +133,63 @@ public class VolatilityTest {
 
 
     }
+
+    private LinkedHashMap<String,Integer> getChangesbyIntervals(String currencyFirst, String currencySecond, String dateFrom, String dateTo){
+
+        ArrayList<Float> changesList = getChanges(currencyFirst,currencySecond,dateFrom,dateTo);
+        ArrayList<Float> intervals = new ArrayList<>();
+        LinkedHashMap<String,Integer> changesMap = new LinkedHashMap<>();
+
+        BigDecimal bd1;
+
+        Float max = Collections.max(changesList) *100;
+        Float min = Collections.min(changesList) *100;
+
+        bd1 = new BigDecimal(max).setScale(5, RoundingMode.UP);
+        max = bd1.floatValue();
+
+        bd1 = new BigDecimal(min).setScale(5, RoundingMode.UP);
+        min = bd1.floatValue();
+
+        Float diff = Math.abs(max+min);
+        Float temp = min;
+
+        intervals.add(min);
+        BigDecimal bd;
+
+        while(temp<max){
+
+            temp +=diff;
+            bd = new BigDecimal(temp).setScale(5, RoundingMode.HALF_DOWN);
+            intervals.add(bd.floatValue());
+        }
+
+        int counterVolatility=0;
+        for(int i=0;i<intervals.size();i++){
+            if(i!=intervals.size()-1){
+                //System.out.print(intervals.get(i)+"% (-) "+intervals.get(i+1)+"%");
+                for(int j=0;j<changesList.size();j++){
+                    if(changesList.get(j)*100>intervals.get(i)
+                            &&  changesList.get(j)*100<intervals.get(i+1)){
+                        counterVolatility++;
+                    }
+                }
+                //System.out.print(" "+counterVolatility);
+                changesMap.put(intervals.get(i)+"% (-) "+intervals.get(i+1)+"%",counterVolatility);
+                counterVolatility=0;
+            }
+
+            //System.out.println("");
+        }
+
+        return changesMap;
+
+    }
+
+
+
+
+
+
+
 }
