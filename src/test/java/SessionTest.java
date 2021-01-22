@@ -9,24 +9,24 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SessionTest {
 
-    /*
+
     Session session = new Session("test","test","2020-07-06","EUR",5);
-    int tab[] = session.printSession();
+    int tab[] = printSession("2020-07-06", "2021-01-15", "EUR");
 
     @Test
     void printSessionTestGrowthSession() {
-        assertEquals(37,tab[0]);
+        assertEquals(39,tab[0]);
     }
     @Test
     void printSessionTestRelegationSession() {
-        assertEquals(37,tab[1]);
+        assertEquals(38,tab[1]);
     }
     @Test
     void printSessionTestNoChangeSession() {
         assertEquals(2,tab[2]);
     }
 
-     */
+
 
     public int[] printSession(String fromData, String toData, String currency){
 

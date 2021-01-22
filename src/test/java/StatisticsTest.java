@@ -15,23 +15,23 @@ import java.util.stream.Collectors;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class StatisticsTest {
-    /*
-    Statistics statistics = new Statistics("2020-07-06","EUR",5);
-    float tab[] = statistics.calculate();
+
+    //Statistics statistics = new Statistics("2020-07-06","EUR",5);
+    float tab[] = calculate("2020-07-06", "2021-01-15","EUR");
 
     @Test
     void calculateTestMediana() {
-        assertEquals(4.473800182342529,tab[0]);
+        assertEquals(4.4745001792907715,tab[0]);
     }
 
     @Test
     void calculateTestOdchylenie() {
-        assertEquals(0.05885609984397888,tab[1]);
+        assertEquals(0.058426350355148315,tab[1]);
     }
 
     @Test
     void calculateTestZmiennosc() {
-        assertEquals(1.3149752616882324,tab[2]);
+        assertEquals(1.3047595024108887,tab[2]);
     }
 
     @Test
@@ -39,7 +39,7 @@ public class StatisticsTest {
         assertEquals(4.4745001792907715,tab[3]);
     }
 
-     */
+
 
 
     public float[] calculate(String fromData, String toData, String currency) {
@@ -110,7 +110,6 @@ public class StatisticsTest {
 
         float [] results = {mediana,odchylenie,zmiennosc,(Float)dominanta.getKey()};
         return results;
-
     }
 
 
