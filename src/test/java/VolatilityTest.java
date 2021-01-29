@@ -8,14 +8,9 @@ import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedHashMap;
+import java.util.*;
 
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
@@ -95,6 +90,22 @@ public class VolatilityTest {
         String currentDate = formatter.format(calendar.getTime());
 
         assertEquals(currentDate,volatility.getCurrentDate());
+    }
+
+    @Test
+    void getChangesbyIntervalsMonthTest(){
+        HashMap<String,Integer> hashMap = new HashMap<String,Integer>();
+        hashMap.put("-0.7911% (-) 119.9941%", 20);
+        hashMap.put("119.9941% (-) 240.7793%", 1);
+        assertEquals(hashMap, getChangesbyIntervals("EUR", "USD", "2020-12-15", "2021-01-15"));
+    }
+
+    @Test
+    void getChangesbyIntervalsQuarterTest(){
+        HashMap<String,Integer> hashMap = new HashMap<String,Integer>();
+        hashMap.put("-1.15203% (-) 110.60136%", 135);
+        hashMap.put("110.60136% (-) 222.35474%", 1);
+        assertEquals(hashMap, getChangesbyIntervals("EUR", "USD", "2020-07-06", "2021-01-15"));
     }
 
     // metoda do testowania funkcji Volatility
