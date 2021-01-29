@@ -26,12 +26,12 @@ public class StatisticsTest {
 
     @Test
     void calculateTestOdchylenie() {
-        assertEquals(0.058426350355148315,tab[1]);
+        assertEquals(0.05851806327700615,tab[1]);
     }
 
     @Test
     void calculateTestZmiennosc() {
-        assertEquals(1.3047595024108887,tab[2]);
+        assertEquals(1.3066574335098267,tab[2]);
     }
 
     @Test
