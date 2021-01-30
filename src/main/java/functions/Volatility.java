@@ -198,7 +198,7 @@ public class Volatility {
     }
 
 
-    private void getChangesbyIntervals(ArrayList<Float> intervals, ArrayList<Float> changesMonthValues){
+    public void getChangesbyIntervals(ArrayList<Float> intervals, ArrayList<Float> changesMonthValues){
 
         int counterVolatility=0;
         for(int i=0;i<intervals.size();i++){
