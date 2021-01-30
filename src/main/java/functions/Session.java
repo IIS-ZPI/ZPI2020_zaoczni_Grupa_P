@@ -60,7 +60,7 @@ public class Session extends ApplicationFrame{
         setContentPane( chartPanel );
     }
 
-    private DefaultCategoryDataset createDataset( ) {
+    public DefaultCategoryDataset createDataset() {
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         if(periodTimeNumber==6){
             for(int i=0;i<currencyInfo.getRates().size();i++){
