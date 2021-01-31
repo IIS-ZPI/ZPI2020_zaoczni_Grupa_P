@@ -62,8 +62,7 @@ public class Main {
                 Volatility volatility = new Volatility(myFinalInfo.getRates().get(number-1).getCode(),
                         myFinalInfo.getRates().get(secondNumber-1).getCode());
                 volatility.printMonthResults();
-
-
+                volatility.printQuarterResult();
 
         }
 

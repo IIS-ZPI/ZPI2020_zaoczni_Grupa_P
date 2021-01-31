@@ -5,6 +5,9 @@ import com.google.gson.reflect.TypeToken;
 import json.ApiConnect;
 import json.currency.CurrencyInfo;
 
+import java.lang.reflect.Array;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -17,8 +20,6 @@ public class Volatility {
     CurrencyInfo currencyInfoQuarterSecond;
 
     SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-
-
 
     public Volatility(String currencyFirst, String currencySecond){
 
@@ -45,9 +46,6 @@ public class Volatility {
 
     }
 
-
-
-
     public ArrayList<Float> getChangesMonthFloat(){
         ArrayList<Float> changesList = new ArrayList<>();
         float prevPairMid = 0;
@@ -57,7 +55,7 @@ public class Volatility {
             float secondCurrencyMid = currencyInfoMonthSecond.getRates().get(i).getMid();
             float pairMid = firstCurrencyMid/secondCurrencyMid;
             if(i==0){
-                changesList.add(pairMid);
+                //changesList.add(pairMid);
             }else {
                 float change = pairMid - prevPairMid;
                 changesList.add(change);
@@ -66,47 +64,6 @@ public class Volatility {
         }
         return changesList;
 
-    }
-
-
-
-    private LinkedHashMap<String,Float> getChangesMonth(){
-        LinkedHashMap<String, Float> changesList = new LinkedHashMap<>();
-        float prevPairMid = 0;
-        for(int i=0;i<currencyInfoMonthFirst.getRates().size();i++){
-
-            float firstCurrencyMid  = currencyInfoMonthFirst.getRates().get(i).getMid();
-            float secondCurrencyMid = currencyInfoMonthSecond.getRates().get(i).getMid();
-            float pairMid = firstCurrencyMid/secondCurrencyMid;
-            if(i==0){
-                changesList.put(currencyInfoMonthFirst.getRates().get(i).getEffectiveDate(),pairMid);
-            }else {
-                float change = pairMid - prevPairMid;
-                changesList.put(currencyInfoMonthFirst.getRates().get(i).getEffectiveDate(),change);
-            }
-            prevPairMid = pairMid;
-        }
-        return changesList;
-
-    }
-
-    private LinkedHashMap<String,Float> getChangesQuarter(){
-        LinkedHashMap<String, Float> changesList = new LinkedHashMap<>();
-        float prevPairMid = 0;
-        for(int i=0;i<currencyInfoQuarterFirst.getRates().size();i++){
-
-            float firstCurrencyMid  = currencyInfoQuarterFirst.getRates().get(i).getMid();
-            float secondCurrencyMid = currencyInfoQuarterSecond.getRates().get(i).getMid();
-            float pairMid = firstCurrencyMid/secondCurrencyMid;
-            if(i==0){
-                changesList.put(currencyInfoQuarterFirst.getRates().get(i).getEffectiveDate(),pairMid);
-            }else {
-                float change = pairMid - prevPairMid;
-                changesList.put(currencyInfoQuarterFirst.getRates().get(i).getEffectiveDate(),change);
-            }
-            prevPairMid = pairMid;
-        }
-        return changesList;
     }
 
     public ArrayList<Float> getChangesQuarterFloat(){
@@ -118,7 +75,7 @@ public class Volatility {
             float secondCurrencyMid = currencyInfoQuarterSecond.getRates().get(i).getMid();
             float pairMid = firstCurrencyMid/secondCurrencyMid;
             if(i==0){
-                changesList.add(pairMid);
+                //changesList.add(pairMid);
             }else {
                 float change = pairMid - prevPairMid;
                 changesList.add(change);
@@ -131,25 +88,67 @@ public class Volatility {
 
     public void printMonthResults(){
 
-        LinkedHashMap<String, Float> changesListMonth= getChangesMonth();
-        ArrayList<String> keysMonth = new ArrayList<>(changesListMonth.keySet());
+        System.out.println("Zmiennosc miesieczna");
+        System.out.println("Odchylenie Standardowe:" +toPercentage(deviation(getChangesMonthFloat()),5));
+        BigDecimal bd1;
 
-        LinkedHashMap<String, Float> changesListQuarter=getChangesQuarter();
-        ArrayList<String> keysQuarter = new ArrayList<>(changesListQuarter.keySet());
+        Float max = Collections.max(getChangesMonthFloat())*100;
+        Float min = Collections.min(getChangesMonthFloat())*100;
 
-        System.out.println("Zmiana Miesieczna");
-       for(String s:keysMonth){
-           System.out.println("Data: "+s+" Zmiana: "+toPercentage(changesListMonth.get(s),6));
-       }
+        bd1 = new BigDecimal(max).setScale(5, RoundingMode.UP);//tu
+        max = bd1.floatValue();
 
-        System.out.println(toPercentage(deviation(getChangesMonthFloat()),3));
+        bd1 = new BigDecimal(min).setScale(5, RoundingMode.UP);//tu
+        min = bd1.floatValue();
 
-        System.out.println("Zmiana kwartalna");
-        for(String s:keysQuarter){
-            System.out.println("Data: "+s+" Zmiana: "+toPercentage(changesListQuarter.get(s),6));
+        Float diff = Math.abs(max+min);
+        Float temp = min;
+
+        ArrayList<Float> intervals = new ArrayList<>();
+        intervals.add(min);
+        BigDecimal bd;
+        while(temp<max){
+
+            temp +=diff;
+            bd = new BigDecimal(temp).setScale(5, RoundingMode.HALF_DOWN);//tu
+            intervals.add(bd.floatValue());
         }
 
-        System.out.println(toPercentage(deviation(getChangesQuarterFloat()),3));
+        ArrayList<Float> changesMonthValues = getChangesMonthFloat();
+        getChangesbyIntervals(intervals,changesMonthValues);
+
+    }
+
+    public void printQuarterResult(){
+
+        System.out.println("Zmiennosc kwartalna");
+        System.out.println("Odchylenie Standardowe: "+toPercentage(deviation(getChangesQuarterFloat()),3));
+        BigDecimal bd1;
+        Float max = Collections.max(getChangesQuarterFloat())*100;
+        Float min = Collections.min(getChangesQuarterFloat())*100;
+
+        bd1 = new BigDecimal(max).setScale(5, RoundingMode.UP);//tu
+        max = bd1.floatValue();
+
+        bd1 = new BigDecimal(min).setScale(5, RoundingMode.UP);//tu
+        min = bd1.floatValue();
+
+        Float diff = Math.abs(max+min);
+        Float temp = min;
+
+        ArrayList<Float> intervals = new ArrayList<>();
+        intervals.add(min);
+        BigDecimal bd;
+
+        while(temp<max){
+
+            temp +=diff;
+            bd = new BigDecimal(temp).setScale(5, RoundingMode.HALF_DOWN);//tu
+            intervals.add(bd.floatValue());
+        }
+
+        ArrayList<Float> changesMonthValues = getChangesQuarterFloat();
+        getChangesbyIntervals(intervals,changesMonthValues);
 
     }
 
@@ -199,12 +198,25 @@ public class Volatility {
     }
 
 
+    public void getChangesbyIntervals(ArrayList<Float> intervals, ArrayList<Float> changesMonthValues){
 
+        int counterVolatility=0;
+        for(int i=0;i<intervals.size();i++){
+            if(i!=intervals.size()-1){
+                System.out.print(intervals.get(i)+"% (-) "+intervals.get(i+1)+"%");
+                for(int j=0;j<changesMonthValues.size();j++){
+                    if(changesMonthValues.get(j)*100>intervals.get(i)
+                            &&  changesMonthValues.get(j)*100<intervals.get(i+1)){
+                        counterVolatility++;
+                    }
+                }
+                System.out.print(" "+counterVolatility);
+                counterVolatility=0;
+            }
 
+            System.out.println("");
+        }
 
-
-
-
-
+    }
 
 }
